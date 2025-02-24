@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../network_manager/repository/login_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -12,7 +13,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _counter = 0;
 
-  void _incrementCounter() => setState(() => _counter++);
+  void _incrementCounter() async {
+    await LoginRepository().login({
+      'email': 'smith@mail.com',
+      'password': '123456',
+      'name': 'Smith Nick',
+      'avatar': "https://i.ibb.co/8Dqgr1y6/1369365.jpg",
+    });
+    setState(() => _counter++);
+  }
 
   @override
   Widget build(BuildContext context) {
