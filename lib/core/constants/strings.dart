@@ -1,0 +1,6 @@
+class Strings {
+  // ? db keys
+  static const String dbKey = 'prefs';
+  static const String accessKey = 'accessKey';
+  static const String refreshKey = 'refreshKey';
+}
