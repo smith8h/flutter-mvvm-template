@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
-import '/core/services/services.dart';
 import '/core/constants/strings.dart';
 
 class Crud {
   final db = Hive.box(Strings.dbKey);
-  final Dio _dio = Get.find<Services>().dio;
+  final Dio _dio = Get.find();
 
   Future<dynamic> get(String url, {Object? body, Map<String, dynamic>? queryParameters}) async {
     try {

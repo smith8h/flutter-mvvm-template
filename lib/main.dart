@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:widgets/controllers/init/locale_controller.dart';
 import 'package:widgets/core/constants/strings.dart';
 import 'package:widgets/core/constants/themes.dart';
+import 'package:widgets/core/services/bindings.dart';
 import 'package:widgets/core/services/services.dart';
 import 'pages/home.dart';
 
