@@ -1,17 +1,18 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import '../../core/services/http_overrides.dart';
 import '../constants/strings.dart';
 
 class Services extends GetxService {
   Future<Services> init() async {
-    WidgetsFlutterBinding.ensureInitialized();
+    await Hive.initFlutter();
+    await Hive.openBox(Strings.dbKey);
 
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    await Hive.initFlutter();
-    await Hive.openBox(Strings.dbKey);
+    HttpOverrides.global = MyHttpOverrides();
 
     return this;
   }

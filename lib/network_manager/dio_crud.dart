@@ -7,46 +7,34 @@ class Crud {
   final db = Hive.box(Strings.dbKey);
   final Dio _dio = getDio();
 
-  Future<dynamic> get(String url, {String? token, Object? body, Map<String, dynamic>? queryParameters}) async {
-    if (token != null) {
-      _dio.options.headers['Authorization'] = 'Bearer $token';
-    }
+  Future<dynamic> get(String url, {Object? body, Map<String, dynamic>? queryParameters}) async {
     try {
-      final response = await _dio.get(url, queryParameters: queryParameters);
+      final response = await _dio.get(url, data: body, queryParameters: queryParameters);
       return response.data;
     } catch (_) {
       return null;
     }
   }
 
-  Future<dynamic> post(String url, {String? token, Object? body, Map<String, String>? queryParameters}) async {
-    if (token != null) {
-      _dio.options.headers['Authorization'] = 'Bearer $token';
-    }
+  Future<dynamic> post(String url, {Object? body, Map<String, String>? queryParameters}) async {
     try {
-      final response = await _dio.post(url, queryParameters: queryParameters, data: body);
+      final response = await _dio.post(url, data: body, queryParameters: queryParameters);
       return response.data;
     } catch (_) {
       return null;
     }
   }
 
-  Future<dynamic> put(String url, {String? token, Object? body, Map<String, String>? queryParameters}) async {
-    if (token != null) {
-      _dio.options.headers['Authorization'] = 'Bearer $token';
-    }
+  Future<dynamic> put(String url, {Object? body, Map<String, String>? queryParameters}) async {
     try {
-      final response = await _dio.put(url, queryParameters: queryParameters, data: body);
+      final response = await _dio.put(url, data: body, queryParameters: queryParameters);
       return response.data;
     } catch (_) {
       return null;
     }
   }
 
-  Future<dynamic> patch(String url, {String? token, Object? body, Map<String, String>? queryParameters}) async {
-    if (token != null) {
-      _dio.options.headers['Authorization'] = 'Bearer $token';
-    }
+  Future<dynamic> patch(String url, {Object? body, Map<String, String>? queryParameters}) async {
     try {
       final response = await _dio.patch(url, queryParameters: queryParameters, data: body);
       return response.data;
@@ -55,10 +43,7 @@ class Crud {
     }
   }
 
-  Future<dynamic> delete(String url, {String? token, Object? body, Map<String, String>? queryParameters}) async {
-    if (token != null) {
-      _dio.options.headers['Authorization'] = 'Bearer $token';
-    }
+  Future<dynamic> delete(String url, {Object? body, Map<String, String>? queryParameters}) async {
     try {
       final response = await _dio.delete(url, queryParameters: queryParameters, data: body);
       return response.data;

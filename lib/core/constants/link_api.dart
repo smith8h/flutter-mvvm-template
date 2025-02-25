@@ -1,8 +1,8 @@
 class LinkApi {
-  static const String baseUrl = 'https://api.escuelajs.co';
+  static const String baseUrl = 'http://192.168.119.188:5003/API';
 
-  static const String user = '$baseUrl/api/v1/users';
+  static const String user = '$baseUrl/User';
   static const String login = '$user/login';
-  static const String logout = '$user/logout';
-  static const String refreshToken = '$user/refreshToken';
+  static const String refreshToken = '$user/refresh-token';
+  static const String register = '$baseUrl/register';
 }

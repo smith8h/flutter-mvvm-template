@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class User {
   String? email;
   String? password;
@@ -6,31 +8,36 @@ class User {
   String? role;
   String? accessToken;
   String? refreshToken;
-  int? id;
+  String? id;
 
   User({this.email, this.password, this.name, this.avatar, this.role, this.id, this.accessToken, this.refreshToken});
 
   User.fromJson(Map<String, dynamic> json) {
-    email = json['email'];
+    email = json['user'];
     password = json['password'];
     name = json['name'];
     avatar = json['avatar'];
-    role = json['role'];
+    role = json['roles'];
     id = json['id'];
-    accessToken = json['access_token'];
-    refreshToken = json['refresh_token'];
+    accessToken = json['accessToken'];
+    refreshToken = json['refreshToken'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['email'] = email;
+    data['user'] = email;
     data['password'] = password;
     data['name'] = name;
     data['avatar'] = avatar;
-    data['role'] = role;
+    data['roles'] = role;
     data['id'] = id;
-    data['access_token'] = accessToken;
-    data['refresh_token'] = refreshToken;
+    data['accessToken'] = accessToken;
+    data['refreshToken'] = refreshToken;
     return data;
+  }
+
+  @override
+  String toString() {
+    return jsonEncode(toJson());
   }
 }

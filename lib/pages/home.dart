@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../network_manager/repository/login_repository.dart';
+import 'package:widgets/utils/print_value.dart';
+import '../network_manager/repository/user_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -11,36 +12,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() async {
-    await LoginRepository().login({
-      'email': 'smith@mail.com',
-      'password': '123456',
-      'name': 'Smith Nick',
-      'avatar': "https://i.ibb.co/8Dqgr1y6/1369365.jpg",
-    });
-    setState(() => _counter++);
+  void _requestWithDio() async {
+    var user = await UserRepository().login({"email": 'to', "password": '2222'});
+    dprint(user?.toJson());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text(widget.title)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text('$_counter', style: Theme.of(context).textTheme.headlineMedium),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [])),
+      floatingActionButton: FloatingActionButton(onPressed: _requestWithDio, tooltip: 'Increment', child: const Icon(Icons.add)),
     );
   }
 }
