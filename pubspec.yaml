@@ -1,31 +1,35 @@
 name: widgets
 description: "A Flutter widgets project."
-publish_to: 'none'
+
+# ? version
 version: 1.0.0+1
 
-
+# ? environment
 environment:
   sdk: ^3.7.0
 
-
+# ? dependencies
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.8
-
-  dio: ^5.8.0+1
+  # core
+  permission_handler: ^11.3.1
   hive_flutter: ^1.1.0
-  path_provider: ^2.1.5
   get: ^4.7.2
 
+  # extra
+  path_provider: ^2.1.5
+  cupertino_icons: ^1.0.8
+  dio: ^5.8.0+1
+
+# ? dev_dependencies
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^5.0.0
 
-
+# ? flutter
 flutter:
   uses-material-design: true
 

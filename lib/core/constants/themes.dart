@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:widgets/core/constants/colors.dart';
 
-TextTheme tt = Theme.of(Get.context!).textTheme;
+TextTheme textStyles = Theme.of(Get.context!).textTheme;
 
 ThemeData lightTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),

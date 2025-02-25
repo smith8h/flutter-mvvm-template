@@ -8,7 +8,7 @@ import '../constants/link_api.dart';
 import '../utils/db_functions.dart';
 
 Dio getDio() {
-  final db = Hive.box(Strings.dbKey);
+  final db = Hive.box(Strings.keyDb);
 
   Dio dio = Dio(
     BaseOptions(
@@ -33,7 +33,7 @@ Dio getDio() {
     InterceptorsWrapper(
       // ? pre request logic
       onRequest: (options, handler) async {
-        String? accessToken = db.get(Strings.accessKey);
+        String? accessToken = db.get(Strings.keyAccessToken);
         if (accessToken != null) {
           options.headers['Authorization'] = 'Bearer $accessToken';
         }
@@ -75,11 +75,11 @@ Dio getDio() {
 }
 
 Future<String> refreshToken() async {
-  final db = Hive.box(Strings.dbKey);
+  final db = Hive.box(Strings.keyDb);
   try {
-    String? refreshToken = await db.get(Strings.refreshKey);
+    String? refreshToken = await db.get(Strings.keyRefreshToken);
     if (refreshToken == null) throw Exception("Refresh token not found.");
-    await db.put(Strings.accessKey, refreshToken);
+    await db.put(Strings.keyAccessToken, refreshToken);
 
     var _ = await getDio().post(LinkApi.refreshToken, data: {"refreshToken": refreshToken});
     saveUserTokens(accessToken: "response.data['data']['token']", refreshToken: "response.data['data']['refreshToken']");

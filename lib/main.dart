@@ -4,6 +4,7 @@ import 'package:widgets/controllers/init/locale_controller.dart';
 import 'package:widgets/core/constants/strings.dart';
 import 'package:widgets/core/constants/themes.dart';
 import 'package:widgets/core/services/bindings.dart';
+import 'package:widgets/core/services/middle_ware.dart';
 import 'package:widgets/core/services/services.dart';
 import 'pages/home.dart';
 
@@ -28,7 +29,9 @@ class App extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       initialBinding: InitialBindings(),
-      getPages: [GetPage(name: Strings.mainPage, page: () => const HomePage())],
+      getPages: [
+        GetPage(name: Strings.pageMain, page: () => const HomePage(), middlewares: [MiddleWare()]),
+      ],
     );
   }
 }

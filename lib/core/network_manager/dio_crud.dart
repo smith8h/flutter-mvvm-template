@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import '/core/constants/strings.dart';
 
 class Crud {
-  final db = Hive.box(Strings.dbKey);
+  final db = Hive.box(Strings.keyDb);
   final Dio _dio = Get.find();
 
   Future<dynamic> get(String url, {Object? body, Map<String, dynamic>? queryParameters}) async {

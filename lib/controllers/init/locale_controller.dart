@@ -7,7 +7,7 @@ class LocaleController extends GetxController {
   Locale? language;
   ThemeMode themeMode = ThemeMode.system;
 
-  final db = Hive.box(Strings.dbKey);
+  final db = Hive.box(Strings.keyDb);
 
   changeLang(String langCode) async {
     await db.put("lang", langCode);
