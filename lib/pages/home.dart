@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/network_manager/repository/task_repository.dart';
 import 'package:widgets/utils/print_value.dart';
 import '../network_manager/repository/user_repository.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -13,14 +12,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   void _requestWithDio() async {
-    var user = await UserRepository().login({"email": 'to', "password": '2222'});
-    dprint(user?.toJson());
+    var tasks = await TaskRepository().gatTasks();
+    dprint(tasks);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text(widget.title)),
       body: Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [])),
       floatingActionButton: FloatingActionButton(onPressed: _requestWithDio, tooltip: 'Increment', child: const Icon(Icons.add)),
     );

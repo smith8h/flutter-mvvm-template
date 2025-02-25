@@ -18,7 +18,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Widgets',
       theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      routes: {Strings.mainPage: (context) => const HomePage(title: 'Home')},
+      routes: {Strings.mainPage: (context) => const HomePage()},
     );
   }
 }

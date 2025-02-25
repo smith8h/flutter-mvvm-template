@@ -5,4 +5,7 @@ class LinkApi {
   static const String login = '$user/login';
   static const String refreshToken = '$user/refresh-token';
   static const String register = '$baseUrl/register';
+
+  static const String task = '$baseUrl/task';
+  static const String leaderTasks = '$task/leadertasks';
 }
