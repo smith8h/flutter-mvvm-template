@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import '/../network_manager/dio_injection.dart';
+import '../network_manager/dio_injection.dart';
 import '../../core/services/http_overrides.dart';
 import '../constants/strings.dart';
 

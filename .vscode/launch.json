@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    // "compounds": [
+    //     {
+    //         "name": "Android",
+    //         "configurations": [
+    //             "Pixel 5"
+    //         ]
+    //     }
+    // ],
+    "configurations": [
+        {
+            "name": "Pixel 5",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "debug",
+            "deviceId": "emulator-5554",
+            "program": "lib/main.dart"
+        }
+    ],
+    // "flutterRunArgs": ["--verbose"]
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widgets/controllers/init/locale_controller.dart';
 import 'package:widgets/core/constants/strings.dart';
+import 'package:widgets/core/constants/themes.dart';
 import 'package:widgets/core/services/services.dart';
 import 'pages/home.dart';
 
@@ -14,11 +16,18 @@ class App extends StatelessWidget {
 
   @override
   build(BuildContext context) {
+    LocaleController controller = Get.put(LocaleController());
+
     return GetMaterialApp(
+      // translations: Translation(),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Widgets',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      routes: {Strings.mainPage: (context) => const HomePage()},
+      locale: controller.language,
+      themeMode: controller.themeMode,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      initialBinding: InitialBindings(),
+      getPages: [GetPage(name: Strings.mainPage, page: () => const HomePage())],
     );
   }
 }

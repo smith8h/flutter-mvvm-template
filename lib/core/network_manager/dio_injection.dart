@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:dio/io.dart';
 import 'package:widgets/core/constants/strings.dart';
-import 'package:widgets/utils/print_value.dart';
-import '../core/constants/link_api.dart';
+import 'package:widgets/core/utils/print_value.dart';
+import '../constants/link_api.dart';
 import '../utils/db_functions.dart';
 
 Dio getDio() {

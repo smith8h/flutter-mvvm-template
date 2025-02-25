@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:widgets/core/models/user.dart';
-import '../core/constants/strings.dart';
+import '../constants/strings.dart';
 import 'print_value.dart';
 
 final db = Hive.box(Strings.dbKey);

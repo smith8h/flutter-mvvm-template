@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widgets/network_manager/repository/task_repository.dart';
-import 'package:widgets/utils/print_value.dart';
+import 'package:widgets/repository/task_repository.dart';
+import 'package:widgets/core/utils/print_value.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
