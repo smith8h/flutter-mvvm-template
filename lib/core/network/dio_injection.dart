@@ -2,10 +2,11 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:dio/io.dart';
-import 'package:widgets/core/constants/strings.dart';
-import 'package:widgets/core/utils/print_value.dart';
-import '../constants/link_api.dart';
-import '../utils/db_functions.dart';
+import '/core/constants/strings.dart';
+import '/core/models/user.dart';
+import '/core/utils/print_value.dart';
+import '/core/constants/link_api.dart';
+import '/core/utils/db_functions.dart';
 
 Dio getDio() {
   final db = Hive.box(Strings.keyDb);
@@ -41,7 +42,7 @@ Dio getDio() {
         dprint('========== onRequest ==========');
         dprint(tag: 'Api URL', '${options.method} -> ${options.uri}');
         dprint(tag: 'Request Headers', '${options.headers}');
-        dprint(tag: 'Request Body', '${options.data}');
+        dprint(tag: 'Request Body', options.data.toString());
 
         return handler.next(options);
       },
@@ -59,11 +60,15 @@ Dio getDio() {
         dprint(tag: 'Request StatusCode', '${e.response?.statusCode ?? 0}');
         dprint(tag: 'Request Error', e.response?.data ?? e.error);
 
-        if (e.response?.statusCode == 401) {
-          String newAccessToken = await refreshToken();
-          e.requestOptions.headers['Authorization'] = 'Bearer $newAccessToken';
-          var repeatedResponse = await dio.fetch(e.requestOptions);
-          return handler.resolve(repeatedResponse);
+        switch (e.response?.statusCode) {
+          case 401:
+            String newAccessToken = await refreshToken();
+            e.requestOptions.headers['Authorization'] = 'Bearer $newAccessToken';
+            var repeatedResponse = await dio.fetch(e.requestOptions);
+            return handler.resolve(repeatedResponse);
+          case 400:
+            dprint("Invalid credentials, check email and password");
+            break;
         }
 
         return handler.next(e);
@@ -79,23 +84,20 @@ Future<String> refreshToken() async {
   try {
     String? refreshToken = await db.get(Strings.keyRefreshToken);
     if (refreshToken == null) throw Exception("Refresh token not found.");
-    await db.put(Strings.keyAccessToken, refreshToken);
 
-    var _ = await getDio().post(LinkApi.refreshToken, data: {"refreshToken": refreshToken});
-    saveUserTokens(accessToken: "response.data['data']['token']", refreshToken: "response.data['data']['refreshToken']");
+    var response = await getDio().post(LinkApi.refreshToken, data: {"refreshToken": refreshToken});
+    var user = User.fromJson(response.data);
+    
+    saveUserTokens(accessToken: user.accessToken, refreshToken: user.refreshToken);
     dprint("Token Has been refreshed successfully...");
-    // return response.data['data']['token'];
-    return "";
+    return user.accessToken!;
   } catch (error) {
     if (error is DioException) {
       if (error.response?.statusCode == 401) {
         dprint("Error in refreshing token status code 401 logout application");
-        // if (loginController.isLoggedIn) {
-        //   loginController.logout();
+        // if (db.get(Strings.keyUser) != null) {
+        //   controller.logout();
         // }
-      }
-      if (error.response?.statusCode == 400) {
-        dprint("Invalid credentials, check email and password");
       }
     } else {
       dprint("Error refreshing token: $error");

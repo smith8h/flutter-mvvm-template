@@ -1,11 +1,11 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import '/core/constants/strings.dart';
 
 class Crud {
   final db = Hive.box(Strings.keyDb);
-  final Dio _dio = Get.find();
+  final dio.Dio _dio = Get.find();
 
   Future<dynamic> get(String url, {Object? body, Map<String, dynamic>? queryParameters}) async {
     try {
@@ -16,7 +16,11 @@ class Crud {
     }
   }
 
-  Future<dynamic> post(String url, {Object? body, Map<String, String>? queryParameters}) async {
+  Future<dynamic> post(String url, {Object? body, Map<String, String>? queryParameters, bool isFormData = false}) async {
+    if (isFormData) {
+      final formData = dio.FormData.fromMap(body as Map<String, dynamic>);
+      return await _dio.post(url, data: formData, queryParameters: queryParameters);
+    }
     try {
       final response = await _dio.post(url, data: body, queryParameters: queryParameters);
       return response.data;
@@ -25,7 +29,11 @@ class Crud {
     }
   }
 
-  Future<dynamic> put(String url, {Object? body, Map<String, String>? queryParameters}) async {
+  Future<dynamic> put(String url, {Object? body, Map<String, String>? queryParameters, bool isFormData = false}) async {
+    if (isFormData) {
+      final formData = dio.FormData.fromMap(body as Map<String, dynamic>);
+      return await _dio.post(url, data: formData, queryParameters: queryParameters);
+    }
     try {
       final response = await _dio.put(url, data: body, queryParameters: queryParameters);
       return response.data;
