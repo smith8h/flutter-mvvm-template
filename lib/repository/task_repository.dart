@@ -1,6 +1,6 @@
 import 'package:widgets/core/models/task.dart';
 import '/core/constants/link_api.dart';
-import '../core/network_manager/dio_crud.dart';
+import '../core/network/dio_crud.dart';
 
 class TaskRepository {
   final crud = Crud();

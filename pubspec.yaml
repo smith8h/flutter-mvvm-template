@@ -17,11 +17,14 @@ dependencies:
   permission_handler: ^11.3.1
   hive_flutter: ^1.1.0
   get: ^4.7.2
+  path_provider: ^2.1.5
 
   # extra
-  path_provider: ^2.1.5
-  cupertino_icons: ^1.0.8
   dio: ^5.8.0+1
+
+  # ui
+  cupertino_icons: ^1.0.8
+  awesome_snackbar_content: ^0.1.5
 
 # ? dev_dependencies
 dev_dependencies:
