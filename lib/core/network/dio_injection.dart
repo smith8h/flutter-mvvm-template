@@ -2,9 +2,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:dio/io.dart';
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import '/core/utils/device_utils.dart';
-import '/core/utils/snackbar.dart';
 import '/core/constants/strings.dart';
 import '/core/models/user.dart';
 import '/core/utils/print_value.dart';
@@ -37,21 +34,17 @@ Dio getDio() {
     InterceptorsWrapper(
       // ? pre request logic
       onRequest: (options, handler) async {
-        if (await DeviceUtils.hasInternetConnection()) {
-          String? accessToken = db.get(Strings.keyAccessToken);
-          if (accessToken != null) {
-            options.headers['Authorization'] = 'Bearer $accessToken';
-          }
-
-          dprint('========== onRequest ==========');
-          dprint(tag: 'Api URL', '${options.method} -> ${options.uri}');
-          dprint(tag: 'Request Headers', '${options.headers}');
-          dprint(tag: 'Request Body', options.data.toString());
-
-          return handler.next(options);
-        } else {
-          appSnackbar(title: 'No Internet!', message: 'Please make sure you have a internet connection', contentType: ContentType.warning);
+        String? accessToken = db.get(Strings.keyAccessToken);
+        if (accessToken != null) {
+          options.headers['Authorization'] = 'Bearer $accessToken';
         }
+
+        dprint('========== onRequest ==========');
+        dprint(tag: 'Api URL', '${options.method} -> ${options.uri}');
+        dprint(tag: 'Request Headers', '${options.headers}');
+        dprint(tag: 'Request Body', options.data.toString());
+
+        return handler.next(options);
       },
 
       // ? post request logic
