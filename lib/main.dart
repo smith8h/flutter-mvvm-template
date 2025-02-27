@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'controllers/init/locale_controller.dart';
 import 'core/localization/translation_controller.dart';
@@ -21,18 +22,23 @@ class App extends StatelessWidget {
   build(context) {
     LocaleController controller = Get.put(LocaleController());
 
-    return GetMaterialApp(
-      translations: Translation(),
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Widgets',
-      locale: controller.language,
-      themeMode: controller.themeMode,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      initialBinding: InitialBindings(),
-      getPages: [
-        GetPage(name: Strings.pageMain, page: () => const HomePage(), middlewares: [MiddleWare()]),
-      ],
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: GetMaterialApp(
+        translations: Translation(),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Widgets',
+        locale: controller.language,
+        themeMode: controller.themeMode,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        initialBinding: InitialBindings(),
+        getPages: [
+          GetPage(name: Strings.pageMain, page: () => const HomePage(), middlewares: [MiddleWare()]),
+        ],
+      ),
     );
   }
 }
