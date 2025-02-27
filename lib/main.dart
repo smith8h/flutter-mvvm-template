@@ -24,21 +24,27 @@ class App extends StatelessWidget {
 
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      child: GetMaterialApp(
-        translations: Translation(),
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Widgets',
-        locale: controller.language,
-        themeMode: controller.themeMode,
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        initialBinding: InitialBindings(),
-        getPages: [
-          GetPage(name: Strings.pageMain, page: () => const HomePage(), middlewares: [MiddleWare()]),
-        ],
-      ),
+      ensureScreenSize: true,
+      enableScaleWH: () => false,
+      enableScaleText: () => false,
+      builder:
+          (context, child) => GetMaterialApp(
+            translations: Translation(),
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Widgets',
+            locale: controller.language,
+            themeMode: controller.themeMode,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            initialBinding: InitialBindings(),
+            // builder: (context, child) {
+            //   ScreenUtil.init(context);
+            //   return HomePage();
+            // },
+            getPages: [
+              GetPage(name: Strings.pageMain, page: () => const HomePage(), middlewares: [MiddleWare()]),
+            ],
+          ),
     );
   }
 }
