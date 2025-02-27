@@ -1,13 +1,10 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:widgets/core/utils/device_utils.dart';
 import 'package:widgets/core/utils/snackbar.dart';
-import '/core/constants/strings.dart';
 
 class Crud {
-  final db = Hive.box(Strings.keyDb);
   final dio.Dio _dio = Get.find();
 
   Future<dynamic> get(String url, {Object? body, Map<String, dynamic>? queryParameters}) async {
