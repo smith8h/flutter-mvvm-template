@@ -10,14 +10,20 @@ class LocaleController extends GetxController {
   final db = Hive.box(Strings.keyDb);
 
   changeLang(String langCode) async {
-    await db.put("lang", langCode);
+    await db.put(Strings.keyLanguage, langCode);
     Get.updateLocale(Locale(langCode));
+  }
+
+  changeTheme(ThemeMode mode) async {
+    await db.put(Strings.keyTheme, mode.toString());
+    themeMode = mode;
+    update();
   }
 
   @override
   void onInit() {
     super.onInit();
-    String? sharedPrefLang = db.get("lang");
+    String? sharedPrefLang = db.get(Strings.keyLanguage);
     if (sharedPrefLang == "ar") {
       language = const Locale("ar");
     } else if (sharedPrefLang == "en") {
@@ -26,7 +32,7 @@ class LocaleController extends GetxController {
       language = Locale(Get.deviceLocale!.languageCode);
     }
 
-    String? theme = db.get("theme");
+    String? theme = db.get(Strings.keyTheme);
     if (theme == "dark") {
       themeMode = ThemeMode.dark;
     } else if (theme == "light") {
