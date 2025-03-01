@@ -37,10 +37,6 @@ class App extends StatelessWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             initialBinding: InitialBindings(),
-            // builder: (context, child) {
-            //   ScreenUtil.init(context);
-            //   return HomePage();
-            // },
             getPages: [
               GetPage(name: Strings.pageMain, page: () => const HomePage(), middlewares: [MiddleWare()]),
             ],
