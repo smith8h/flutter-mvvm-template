@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../constants/strings.dart';
-import 'http_overrides.dart';
+import '../utils/http_overrides.dart';
 
 class Services extends GetxService {
   Future<Services> init() async {

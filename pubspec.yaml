@@ -19,9 +19,10 @@ dependencies:
   get: ^4.7.2
   path_provider: ^2.1.5
 
-  # extra
+  # network
   dio: ^5.8.0+1
   internet_connection_checker: ^3.0.1
+  signalr_core: ^1.1.2
 
   # ui
   cupertino_icons: ^1.0.8
@@ -37,7 +38,7 @@ dev_dependencies:
 # ? flutter
 flutter:
   uses-material-design: true
-  
+
   # ? assets
   assets:
     - assets/icons/
