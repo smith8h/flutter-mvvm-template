@@ -23,7 +23,7 @@ appSnackbar({
   var topSnackBar = MaterialBanner(
     backgroundColor: AppColors.transparent,
     dividerColor: AppColors.transparent,
-    content: AwesomeSnackbarContent(title: title, message: message, contentType: contentType),
+    content: AwesomeSnackbarContent(title: title, message: message, contentType: contentType, inMaterialBanner: true),
     actions: [SizedBox.shrink()],
   );
 

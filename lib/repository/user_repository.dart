@@ -4,10 +4,8 @@ import '/../core/constants/link_api.dart';
 import '../core/network/dio_crud.dart';
 
 class UserRepository {
-  final crud = Crud();
-
-  Future<User?> login(Object body) async {
-    final response = await crud.post(LinkApi.login, body: body);
+  static Future<User?> login(Object body) async {
+    final response = await Crud.post(LinkApi.login, body: body);
     try {
       var user = User.fromJson(response['result']);
       saveUserData(user: user.toString());

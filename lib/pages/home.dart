@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   void _requestWithDio() async {
-    var tasks = await UserRepository().login(User(email: 'zz', password: 'zz'));
+    var tasks = await UserRepository.login(User(email: 'admin', password: 'admin').toJson());
     dprint(tasks);
   }
 
