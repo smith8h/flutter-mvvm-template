@@ -1,13 +1,13 @@
 {
     "version": "0.2.0",
-    // "compounds": [
-    //     {
-    //         "name": "Android",
-    //         "configurations": [
-    //             "Pixel 5"
-    //         ]
-    //     }
-    // ],
+    "compounds": [
+        {
+            "name": "Auto Run Emulators",
+            "configurations": [
+                "Pixel 5"
+            ]
+        }
+    ],
     "configurations": [
         {
             "name": "Pixel 5",

@@ -14,4 +14,13 @@ class UserRepository {
       return null;
     }
   }
+
+  static Future<User?> getCinemanaCategories() async {
+    final response = await Crud.get('https://cinemana.shabakaty.com/api/android/mainCategories?lang=en');
+    try {
+      return response;
+    } catch (_) {
+      return null;
+    }
+  }
 }
