@@ -13,10 +13,6 @@ Dio getDio() {
 
   Dio dio = Dio(
     BaseOptions(
-      validateStatus: (status) {
-        status = status ?? 0;
-        return status >= 200 && status < 300 || status == 400 || status == 401 || status == 403 || status == 404 || status == 500;
-      },
       persistentConnection: true,
       baseUrl: LinkApi.baseUrl,
       receiveTimeout: Duration(seconds: 60),

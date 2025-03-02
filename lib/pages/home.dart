@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/core/constants/themes.dart';
-import 'package:widgets/repository/task_repository.dart';
+import 'package:widgets/core/models/user.dart';
 import 'package:widgets/core/utils/print_value.dart';
+import 'package:widgets/repository/user_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   void _requestWithDio() async {
-    var tasks = await TaskRepository().gatTasks();
+    var tasks = await UserRepository().login(User(email: 'zz', password: 'zz'));
     dprint(tasks);
   }
 
