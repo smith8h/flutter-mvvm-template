@@ -1,4 +1,6 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
+import 'dart:io';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:dio/dio.dart' as dio;
@@ -17,7 +19,17 @@ class Crud {
     final dio.Dio _dio = Get.find();
     if (await DeviceUtils.hasInternetConnection()) {
       try {
-        final data = formData ? dio.FormData.fromMap(body as Map<String, dynamic>) : body;
+        final data =
+            formData
+                ? dio.FormData.fromMap(
+                  Map.fromEntries(
+                    (body! as Map<String, dynamic>).entries.map((entry) {
+                      if (entry.value is File) return MapEntry(entry.key, dio.MultipartFile.fromFileSync(entry.value.path));
+                      return MapEntry(entry.key, entry.value);
+                    }),
+                  ),
+                )
+                : body;
         final response = await _dio.request(url, data: data, queryParameters: parameters, options: dio.Options(method: method));
         return response.data;
       } catch (_) {
