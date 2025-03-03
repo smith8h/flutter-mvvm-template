@@ -25,6 +25,15 @@ class Crud {
                   Map.fromEntries(
                     (body! as Map<String, dynamic>).entries.map((entry) {
                       if (entry.value is File) return MapEntry(entry.key, dio.MultipartFile.fromFileSync(entry.value.path));
+                      if (entry.value is List) {
+                        return MapEntry(
+                          entry.key,
+                          entry.value.map((item) {
+                            if (item is File) return dio.MultipartFile.fromFileSync(item.path);
+                            return item;
+                          }).toList(),
+                        );
+                      }
                       return MapEntry(entry.key, entry.value);
                     }),
                   ),
