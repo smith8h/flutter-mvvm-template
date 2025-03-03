@@ -49,18 +49,18 @@ class Crud {
     }
   }
 
-  static Future<dynamic> get(String url, {Object? body, Map<String, dynamic>? parameters}) =>
-      _request('GET', url, body: body, parameters: parameters);
+  static Future<dynamic> get(String url, {Object? body, Map<String, dynamic>? queryParameters}) =>
+      _request('GET', url, body: body, parameters: queryParameters);
 
-  static Future<dynamic> post(String url, {Object? body, Map<String, dynamic>? parameters, bool isFormData = false}) =>
-      _request('POST', url, body: body, parameters: parameters, formData: isFormData);
+  static Future<dynamic> post(String url, {Object? body, Map<String, dynamic>? queryParameters, bool isFormData = false}) =>
+      _request('POST', url, body: body, parameters: queryParameters, formData: isFormData);
 
-  static Future<dynamic> put(String url, {Object? body, Map<String, dynamic>? parameters, bool isFormData = false}) =>
-      _request('PUT', url, body: body, parameters: parameters, formData: isFormData);
+  static Future<dynamic> put(String url, {Object? body, Map<String, dynamic>? queryParameters, bool isFormData = false}) =>
+      _request('PUT', url, body: body, parameters: queryParameters, formData: isFormData);
 
-  static Future<dynamic> patch(String url, {Object? body, Map<String, dynamic>? parameters}) =>
-      _request('PATCH', url, body: body, parameters: parameters);
+  static Future<dynamic> patch(String url, {Object? body, Map<String, dynamic>? queryParameters, bool isFormData = false}) =>
+      _request('PATCH', url, body: body, parameters: queryParameters, formData: isFormData);
 
-  static Future<dynamic> delete(String url, {Object? body, Map<String, dynamic>? parameters}) =>
-      _request('DELETE', url, body: body, parameters: parameters);
+  static Future<dynamic> delete(String url, {Object? body, Map<String, dynamic>? queryParameters}) =>
+      _request('DELETE', url, body: body, parameters: queryParameters);
 }
