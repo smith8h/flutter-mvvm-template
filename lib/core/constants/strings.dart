@@ -9,10 +9,7 @@ class Strings {
 
   // ? routes
   static const String pageMain = '/';
-  static const String pageHome = '/home';
-  static const String pageMap = '/map';
-  static const String pageTask = '/task';
 
   // ? assets images and icons
-  static const String assetsPin = "assets/pin.png";
+  static const String imageSittingDoodle = "assets/images/sitting_doodle.png";
 }
