@@ -10,11 +10,10 @@ class NoDataWidget extends StatelessWidget {
   Widget build(context) {
     return Center(
       child: Column(
-        children: [
-          Image.asset(Strings.imageSittingDoodle, width: .5.sw),
-          12.verticalSpace,
-          Text('There is no data!', style: textStyles.bodyLarge),
-        ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        spacing: 8.h,
+        children: [Image.asset(Strings.imageSittingDoodle, width: .5.sw), Text('There is no data!', style: textStyles.bodyLarge)],
       ),
     );
   }
