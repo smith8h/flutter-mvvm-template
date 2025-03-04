@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/core/constants/themes.dart';
 import 'package:widgets/core/utils/print_value.dart';
-import 'package:widgets/repository/user_repository.dart';
-import 'package:widgets/widgets/no_data_widget.dart';
-import 'package:widgets/widgets/text_input.dart';
+import 'package:widgets/viewmodel/repository/user_repository.dart';
+import 'package:widgets/view/widgets/no_data_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
