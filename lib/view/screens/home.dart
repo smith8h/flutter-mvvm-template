@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/core/constants/themes.dart';
-import 'package:widgets/view/widgets/loading%20widget.dart';
-import 'package:widgets/viewmodel/repository/user_repository.dart';
+import 'package:widgets/view/widgets/loading_widget.dart';
+import 'package:widgets/service/repository/user_repository.dart';
 import 'package:widgets/view/widgets/no_data_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,8 +34,10 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           loading = true;
           setState(() {});
+
           categories = await UserRepository.getCinemanaCategories();
           categories.sort((a, b) => a['title'].compareTo(b['title']));
+          
           loading = false;
           setState(() {});
         },

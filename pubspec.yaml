@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   awesome_snackbar_content: ^0.1.5
   flutter_screenutil: ^5.9.3
+  styled_widget: ^0.4.1
 
 # ? dev_dependencies
 dev_dependencies:
