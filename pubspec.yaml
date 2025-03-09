@@ -18,8 +18,11 @@ dependencies:
   get: ^4.7.2
 
   # extra
+  cupertino_icons: ^1.0.8
   path_provider: ^2.1.5
   permission_handler: ^11.3.1
+  styled_widget: ^0.4.1
+  nb_utils: ^7.0.7
 
   # network
   dio: ^5.8.0+1
@@ -27,10 +30,8 @@ dependencies:
   signalr_core: ^1.1.2
 
   # ui
-  cupertino_icons: ^1.0.8
   awesome_snackbar_content: ^0.1.5
   flutter_screenutil: ^5.9.3
-  styled_widget: ^0.4.1
 
 # ? dev_dependencies
 dev_dependencies:

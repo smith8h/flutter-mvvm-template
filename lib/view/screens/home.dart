@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           loading
               ? LoadingWidget()
               : categories.isEmpty
-              ? NoDataWidget()
+              ? NoDataWidget(text: 'No data found!')
               : ListView.builder(
                 itemCount: categories.length,
                 itemBuilder:
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
 
           categories = await UserRepository.getCinemanaCategories();
           categories.sort((a, b) => a['title'].compareTo(b['title']));
-          
+
           loading = false;
           setState(() {});
         },

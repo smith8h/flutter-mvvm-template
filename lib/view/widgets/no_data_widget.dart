@@ -13,7 +13,7 @@ class NoDataWidget extends StatelessWidget {
   Widget build(context) {
     return [
       Image.asset(Strings.imageSittingDoodle, width: .5.sw),
-      Text(text, style: textStyles.bodyLarge),
+      Text(text, style: textStyles.bodyLarge, textAlign: TextAlign.center),
     ].toColumn(mainAxisAlignment: MainAxisAlignment.center, mainAxisSize: MainAxisSize.min, separator: 8.verticalSpace).center();
   }
 }
