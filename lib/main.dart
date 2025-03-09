@@ -23,7 +23,7 @@ class App extends StatelessWidget {
     InitAppController controller = Get.put(InitAppController());
 
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: Size(375, 812),
       ensureScreenSize: true,
       enableScaleWH: () => false,
       enableScaleText: () => false,
