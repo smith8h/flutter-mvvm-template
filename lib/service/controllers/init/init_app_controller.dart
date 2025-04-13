@@ -3,7 +3,7 @@ import '/core/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LocaleController extends GetxController {
+class InitAppController extends GetxController {
   Locale? language;
   ThemeMode themeMode = ThemeMode.system;
 

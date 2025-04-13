@@ -13,7 +13,7 @@ ThemeData lightTheme = ThemeData(
   appBarTheme: AppBarTheme(
     iconTheme: IconThemeData(color: AppColors.primary),
     titleTextStyle: TextStyle(color: AppColors.primary, fontFamily: "Poppins", fontWeight: FontWeight.bold, fontSize: 20.sp),
-    backgroundColor: AppColors.whiteBackground,
+    backgroundColor: AppColors.background,
   ),
   textTheme: TextTheme(
     headlineLarge: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.bold, fontSize: 30.sp, color: AppColors.primary),
@@ -37,7 +37,7 @@ ThemeData darkTheme = ThemeData(
   appBarTheme: AppBarTheme(
     iconTheme: IconThemeData(color: AppColors.primary),
     titleTextStyle: TextStyle(color: AppColors.primary, fontFamily: "Poppins", fontWeight: FontWeight.bold, fontSize: 20.sp),
-    backgroundColor: AppColors.whiteBackground,
+    backgroundColor: AppColors.background,
   ),
   textTheme: TextTheme(
     headlineLarge: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.bold, fontSize: 30.sp, color: AppColors.primary),

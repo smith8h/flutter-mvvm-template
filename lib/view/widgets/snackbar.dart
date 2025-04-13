@@ -12,14 +12,14 @@ appSnackbar({
 }) {
   var messenger = ScaffoldMessenger.of(Get.context!);
 
-  //  ? in bootom snackbar
+  //  ? on the bootom snackbar
   final bottomSnackBar = SnackBar(
     behavior: SnackBarBehavior.floating,
     backgroundColor: AppColors.transparent,
     content: AwesomeSnackbarContent(title: title, message: message, contentType: contentType),
   );
 
-  // ? in top snackbar
+  // ? on the top snackbar
   var topSnackBar = MaterialBanner(
     backgroundColor: AppColors.transparent,
     dividerColor: AppColors.transparent,

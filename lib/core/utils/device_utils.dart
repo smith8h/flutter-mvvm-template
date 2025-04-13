@@ -75,8 +75,7 @@ class DeviceUtils {
 
   static Future<bool> hasInternetConnection() async {
     return await InternetConnectionChecker.createInstance(
-      addresses: [AddressCheckOption(uri: Uri.parse('example.com'))],
-      slowConnectionConfig: SlowConnectionConfig(enableToCheckForSlowConnection: true),
+      addresses: [AddressCheckOption(uri: Uri.parse('https://www.google.com'))],
     ).hasConnection;
   }
 }

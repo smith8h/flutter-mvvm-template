@@ -3,10 +3,8 @@ import '/core/constants/link_api.dart';
 import '../../core/network/dio_crud.dart';
 
 class TaskRepository {
-  final crud = Crud();
-
   Future<List<Task>?> gatTasks() async {
-    final response = await crud.get(LinkApi.leaderTasks);
+    final response = await Crud.get(LinkApi.leaderTasks);
     var tasks = response['data']['result'];
     return tasks;
   }
