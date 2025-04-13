@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/core/constants/themes.dart';
-import 'package:widgets/repository/task_repository.dart';
+import 'package:widgets/service/repository/task_repository.dart';
 import 'package:widgets/core/utils/print_value.dart';
 
 class HomePage extends StatefulWidget {

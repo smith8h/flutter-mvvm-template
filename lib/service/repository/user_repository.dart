@@ -1,8 +1,8 @@
 import 'dart:convert';
-import '../core/utils/db_functions.dart';
+import '../../core/utils/db_functions.dart';
 import '/../core/models/user.dart';
 import '/../core/constants/link_api.dart';
-import '../core/network/dio_crud.dart';
+import '../../core/network/dio_crud.dart';
 
 class UserRepository {
   final crud = Crud();

@@ -2,7 +2,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:widgets/core/utils/device_utils.dart';
-import 'package:widgets/widgets/snackbar.dart';
+import 'package:widgets/view/widgets/snackbar.dart';
 
 class Crud {
   final dio.Dio _dio = Get.find();

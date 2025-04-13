@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'controllers/init/locale_controller.dart';
+import 'service/controllers/init/locale_controller.dart';
 import 'core/localization/translation_controller.dart';
 import 'core/constants/strings.dart';
 import 'core/constants/themes.dart';
 import 'core/services/bindings.dart';
 import 'core/services/middle_ware.dart';
 import 'core/services/services.dart';
-import 'pages/home.dart';
+import 'view/screens/home.dart';
 
 void main() async {
   await initialServices();
