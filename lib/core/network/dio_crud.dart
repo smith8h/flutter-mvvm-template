@@ -14,13 +14,13 @@ class Crud {
     String url, {
     Object? body,
     Map<String, dynamic>? parameters,
-    bool formData = false,
+    bool isFormData = false,
   }) async {
     final dio.Dio _dio = Get.find();
     if (await DeviceUtils.hasInternetConnection()) {
       try {
         final data =
-            formData
+            isFormData
                 ? dio.FormData.fromMap(
                   Map.fromEntries(
                     (body! as Map<String, dynamic>).entries.map((entry) {
@@ -53,13 +53,13 @@ class Crud {
       _request('GET', url, body: body, parameters: queryParameters);
 
   static Future<dynamic> post(String url, {Object? body, Map<String, dynamic>? queryParameters, bool isFormData = false}) =>
-      _request('POST', url, body: body, parameters: queryParameters, formData: isFormData);
+      _request('POST', url, body: body, parameters: queryParameters, isFormData: isFormData);
 
   static Future<dynamic> put(String url, {Object? body, Map<String, dynamic>? queryParameters, bool isFormData = false}) =>
-      _request('PUT', url, body: body, parameters: queryParameters, formData: isFormData);
+      _request('PUT', url, body: body, parameters: queryParameters, isFormData: isFormData);
 
   static Future<dynamic> patch(String url, {Object? body, Map<String, dynamic>? queryParameters, bool isFormData = false}) =>
-      _request('PATCH', url, body: body, parameters: queryParameters, formData: isFormData);
+      _request('PATCH', url, body: body, parameters: queryParameters, isFormData: isFormData);
 
   static Future<dynamic> delete(String url, {Object? body, Map<String, dynamic>? queryParameters}) =>
       _request('DELETE', url, body: body, parameters: queryParameters);

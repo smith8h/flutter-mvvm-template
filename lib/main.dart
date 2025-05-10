@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'service/controller/init/init_app_controller.dart';
+import 'service/controllers/init/init_app_controller.dart';
 import 'core/localization/translation_controller.dart';
 import 'core/constants/strings.dart';
 import 'core/constants/themes.dart';

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/core/constants/themes.dart';
+import 'package:widgets/service/repository/task_repository.dart';
+import 'package:widgets/core/utils/print_value.dart';
 import 'package:widgets/view/widgets/loading_widget.dart';
-import 'package:widgets/service/repository/user_repository.dart';
 import 'package:widgets/view/widgets/no_data_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +13,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void _requestWithDio() async {
+    var tasks = await TaskRepository().gatTasks();
+    dprint(tasks);
+  }
   List categories = [];
   bool loading = true;
 
@@ -19,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Home Page', style: textStyles.titleSmall)),
+      floatingActionButton: FloatingActionButton(onPressed: _requestWithDio, tooltip: 'Increment', child: const Icon(Icons.add)),
       body:
           loading
               ? LoadingWidget()
@@ -30,19 +36,7 @@ class _HomePageState extends State<HomePage> {
                     (_, index) =>
                         ListTile(leading: CircleAvatar(child: Text(categories[index]['nb'])), title: Text(categories[index]['title'])),
               ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          loading = true;
-          setState(() {});
 
-          categories = await UserRepository.getCinemanaCategories();
-          categories.sort((a, b) => a['title'].compareTo(b['title']));
-
-          loading = false;
-          setState(() {});
-        },
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
